@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Học CSS cơ bản</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Menu */
+nav {
+    background: #333;
+    display: flex;
+    justify-content: center;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #555;
+}
+
+/* Nội dung */
+.container {
+    padding: 20px;
+}
+
+.section {
+    display: none;
+    background: white;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.active {
+    display: block;
+}
+
+/* Card */
+.card {
+    background: #eef;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 5px solid #4facfe;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #222;
+    color: white;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📘 Học CSS từ cơ bản đến nâng cao</h1>
+    <p>Dành cho học sinh - sinh viên</p>
+</header>
+
+<nav>
+    <button onclick="show('history')">Lịch sử</button>
+    <button onclick="show('concept')">Khái niệm</button>
+    <button onclick="show('structure')">Cấu trúc</button>
+    <button onclick="show('usage')">Cách dùng</button>
+    <button onclick="show('proscons')">Ưu / Nhược</button>
+</nav>
+
+<div class="container">
+
+<!-- Lịch sử -->
+<div id="history" class="section active">
+    <h2>📜 Lịch sử CSS</h2>
+    <div class="card">
+        CSS được phát triển bởi W3C nhằm tách nội dung và giao diện.
+    </div>
+    <div class="card">
+        <b>CSS1 (1996):</b> Cơ bản (màu, font, căn lề)
+    </div>
+    <div class="card">
+        <b>CSS2 (1998):</b> Bố cục phức tạp hơn
+    </div>
+    <div class="card">
+        <b>CSS3 (2011):</b> Animation, Flexbox, Grid
+    </div>
+    <div class="card">
+        <b>CSS4:</b> Đang phát triển
+    </div>
+</div>
+
+<!-- Khái niệm -->
+<div id="concept" class="section">
+    <h2>💡 Khái niệm CSS</h2>
+    <p>CSS là ngôn ngữ dùng để định dạng giao diện website.</p>
+    <ul>
+        <li>Màu sắc</li>
+        <li>Font chữ</li>
+        <li>Bố cục</li>
+        <li>Khoảng cách</li>
+    </ul>
+</div>
+
+<!-- Cấu trúc -->
+<div id="structure" class="section">
+    <h2>🧱 Cấu trúc CSS</h2>
+    <div class="card">
+        <b>Selector:</b> chọn phần tử HTML
+    </div>
+    <div class="card">
+        <b>Declaration:</b> thuộc tính + giá trị
+    </div>
+
+<pre>
+h1 {
+  color: red;
+  font-size: 20px;
+}
+</pre>
+
+</div>
+
+<!-- Cách dùng -->
+<div id="usage" class="section">
+    <h2>⚙️ Cách sử dụng CSS</h2>
+    <div class="card">
+        Internal CSS (trong thẻ &lt;style&gt;)
+    </div>
+    <div class="card">
+        External CSS (file .css)
+    </div>
+    <div class="card">
+        Inline CSS (trực tiếp trong thẻ)
+    </div>
+</div>
+
+<!-- Ưu nhược -->
+<div id="proscons" class="section">
+    <h2>⚖️ Ưu và Nhược điểm</h2>
+
+    <h3>✅ Ưu điểm</h3>
+    <ul>
+        <li>Tiết kiệm thời gian</li>
+        <li>Tái sử dụng code</li>
+        <li>Web đẹp hơn</li>
+    </ul>
+
+    <h3>❌ Nhược điểm</h3>
+    <ul>
+        <li>Khác nhau giữa trình duyệt</li>
+        <li>Khó với người mới</li>
+        <li>Có thể lỗi nếu file CSS hỏng</li>
+    </ul>
+</div>
+
+</div>
+
+<footer>
+    © 2026 - Design by Mikean 😎
+</footer>
+
+<script>
+function show(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
