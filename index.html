@@ -1,230 +1,272 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Tài liệu CSS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học CSS: Lộ trình chi tiết cho người mới bắt đầu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ed1c24;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --white: #ffffff;
+            --gray-border: #ddd;
+        }
 
-<style>
-body {
-    font-family: "Segoe UI", sans-serif;
-    margin: 0;
-    background: #f9fafc;
-    line-height: 1.7;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-/* NAVBAR */
-.navbar {
-    background: white;
-    border-bottom: 1px solid #ddd;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-}
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-.navbar a {
-    text-decoration: none;
-    color: #007bff;
-}
+        /* --- Header --- */
+        header {
+            background-color: #121212;
+            color: white;
+            padding: 15px 10%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* HEADER */
-header {
-    padding: 40px;
-    background: linear-gradient(120deg, #4facfe, #00f2fe);
-    color: white;
-}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-/* CONTAINER */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
+        .logo-area input {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+        }
 
-/* MỤC LỤC */
-.toc {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-.toc a {
-    display: block;
-    padding: 6px;
-    text-decoration: none;
-    color: #333;
-}
+        /* --- Main Layout --- */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 30px;
+            padding: 0 15px;
+        }
 
-.toc a:hover {
-    color: #007bff;
-}
+        /* Bên trái: Nội dung (Cuộn được) */
+        .content-area {
+            flex: 2;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-/* SECTION */
-.section {
-    background: white;
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
+        /* Bên phải: Mục lục (Sticky - Cố định) */
+        .sidebar {
+            flex: 1;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
 
-/* IMAGE */
-img {
-    width: 100%;
-    border-radius: 10px;
-    margin: 15px 0;
-}
+        .sidebar-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
 
-/* TITLE */
-h2 {
-    border-left: 5px solid #007bff;
-    padding-left: 10px;
-}
+        /* --- Typography --- */
+        h1 { color: var(--primary-color); margin-bottom: 20px; font-size: 28px; }
+        h2 { color: #222; margin: 25px 0 15px 0; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+        h3 { margin: 15px 0 10px 0; color: #444; }
+        p { margin-bottom: 15px; text-align: justify; }
+        ul { margin-bottom: 15px; padding-left: 20px; }
+        li { margin-bottom: 8px; }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #222;
-    color: white;
-}
-</style>
+        .highlight { color: var(--primary-color); font-weight: bold; }
+
+        /* --- Image Box --- */
+        .image-box {
+            background: #eee;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px dashed #bbb;
+        }
+
+        /* --- Table of Contents Style --- */
+        .toc h3 { border-bottom: 1px solid var(--gray-border); padding-bottom: 10px; }
+        .toc ul { list-style: none; padding: 0; margin-top: 10px; }
+        .toc ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            display: block;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+        .toc ul li a:hover { color: var(--primary-color); padding-left: 5px; }
+
+        /* Code block style */
+        code {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d14;
+        }
+
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { position: static; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div>👤 Tên của bạn</div>
-    <div><a href="#">🔗 Link của bạn</a></div>
-</div>
-
 <header>
-    <h1>📘 Tài liệu học CSS</h1>
-    <p>Tổng hợp kiến thức đầy đủ cho học sinh - sinh viên</p>
+    <div class="logo-area">
+        <strong style="color: var(--primary-color); font-size: 20px;">itViec</strong>
+        <input type="text" placeholder="Try yourself">
+        <input type="text" placeholder="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor">
+    </div>
+    <nav>
+        <a href="#">Việc Làm IT</a>
+        <a href="#">Sự Nghiệp IT</a>
+        <a href="#">Chuyên Môn IT</a>
+    </nav>
 </header>
 
 <div class="container">
+    <main class="content-area">
+        <p style="color: #888; font-size: 13px;">Ngày xuất bản: 05/04/2026</p>
+        <h1>Học CSS: Lộ trình chi tiết cho người mới bắt đầu</h1>
 
-<!-- MỤC LỤC -->
-<div class="toc">
-    <h2>📑 Mục lục</h2>
-    <a href="#history">1. Lịch sử CSS</a>
-    <a href="#concept">2. Khái niệm CSS</a>
-    <a href="#structure">3. Cấu trúc CSS</a>
-    <a href="#usage">4. Cách sử dụng CSS</a>
-    <a href="#proscons">5. Ưu và nhược điểm</a>
-    <a href="#role">6. Vai trò CSS</a>
-</div>
+        <section id="lich-su">
+            <h2>1. LỊCH SỬ CỦA CSS</h2>
+            <p>CSS được phát triển bởi <strong>World Wide Web Consortium (W3C)</strong>. CSS ra đời với mục đích đơn giản là định hình cho website thông qua màu sắc, font chữ, bố cục... giúp tách biệt nội dung (HTML) và hình thức hiển thị.</p>
+            
+            <div class="image-box">
+                                <p><i>Hình 1: Các cột mốc phát triển của CSS</i></p>
+            </div>
 
-<!-- 1 -->
-<div id="history" class="section">
-<h2>1. LỊCH SỬ CSS</h2>
+            <ul>
+                <li><strong>CSS1 (1996):</strong> Những tính năng cơ bản như màu sắc, font chữ.</li>
+                <li><strong>CSS2 (1998):</strong> Bổ sung bố cục phức tạp và hỗ trợ đa phương tiện.</li>
+                <li><strong>CSS3 (2011):</strong> Bước tiến lớn với Flexbox, Grid, Animation.</li>
+                <li><strong>CSS4:</strong> Đang phát triển để tối ưu trải nghiệm người dùng.</li>
+            </ul>
+        </section>
 
-<p>CSS được phát triển bởi W3C, là tổ chức chuyên xây dựng các tiêu chuẩn web.</p>
+        <section id="khai-niem">
+            <h2>2. KHÁI NIỆM MẪU ĐỊNH DẠNG CSS</h2>
+            <p>CSS là định dạng độc lập với chuẩn HTML. Ví dụ về cách định dạng:</p>
+            <ul>
+                <li>Mẫu 1: Thiết lập chữ đỏ cho thẻ <code>&lt;h1&gt;</code>.</li>
+                <li>Mẫu 2: Khung viền xanh 2px cho <code>&lt;h1&gt;</code>.</li>
+                <li>Mẫu 3: Thụt lề 15px cho thẻ <code>&lt;p&gt;</code>.</li>
+            </ul>
+            <div class="image-box">
+                                <p><i>Hình 13.3: Minh họa mẫu định dạng CSS</i></p>
+            </div>
+        </section>
 
-<p>CSS ra đời nhằm định hình website thông qua màu sắc, font chữ, bố cục, hình ảnh…</p>
+        <section id="tim-hieu">
+            <h2>3. TÌM HIỂU VỀ CSS</h2>
+            <p>CSS là công cụ trang trí, giúp HTML trở nên sinh động. Các loại CSS thông dụng:</p>
+            <ul>
+                <li>CSS Background (Hình nền)</li>
+                <li>CSS Text & Font (Chữ viết)</li>
+                <li>CSS Box Model (Padding, Margin, Border)</li>
+                <li>CSS Table & List</li>
+            </ul>
+        </section>
 
-<p>CSS giúp tách nội dung HTML và giao diện, giúp web chuyên nghiệp hơn.</p>
-
-<img src="https://cdn.pixabay.com/photo/2017/01/18/17/14/html-1999990_1280.png">
-
-<h3>Các phiên bản:</h3>
-<ul>
-<li>CSS1 (1996): màu sắc, font, căn lề</li>
-<li>CSS2 (1998): bố cục phức tạp</li>
-<li>CSS3 (2011): animation, flexbox, grid</li>
-<li>CSS4: đang phát triển</li>
-</ul>
-
-</div>
-
-<!-- 2 -->
-<div id="concept" class="section">
-<h2>2. KHÁI NIỆM CSS</h2>
-
-<p>CSS là ngôn ngữ định dạng giao diện website.</p>
-
-<p>CSS giúp trang web trở nên sinh động và thân thiện với người dùng.</p>
-
-<ul>
-<li>Background</li>
-<li>Text</li>
-<li>Font</li>
-<li>Table</li>
-<li>Margin, padding</li>
-</ul>
-
-<img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg">
-
-</div>
-
-<!-- 3 -->
-<div id="structure" class="section">
-<h2>3. CẤU TRÚC CSS</h2>
-
-<p>CSS gồm 2 phần:</p>
-<ul>
-<li>Selector</li>
-<li>Declaration</li>
-</ul>
-
-<pre>
-h1 {
-  color: red;
-  font-size: 20px;
+        <section id="cau-truc">
+            <h2>4. CẤU TRÚC VÀ CÁCH SỬ DỤNG</h2>
+            <h3>Cấu trúc tổng quát:</h3>
+            <pre>
+selector {
+  property: value;
 }
-</pre>
+            </pre>
+            <h3>3 Cách thiết lập:</h3>
+            <ul>
+                <li><strong>CSS trong (Internal):</strong> Đặt trong thẻ <code>&lt;style&gt;</code> ở <code>head</code>.</li>
+                <li><strong>CSS ngoài (External):</strong> Lưu file .css riêng và dùng thẻ <code>&lt;link&gt;</code>.</li>
+                <li><strong>CSS nội tuyến (Inline):</strong> Viết trực tiếp vào thuộc tính <code>style="..."</code> của thẻ HTML.</li>
+            </ul>
+        </section>
 
+        <section id="uu-nhuoc">
+            <h2>5. ƯU VÀ NHƯỢC ĐIỂM</h2>
+            <p><strong>Ưu điểm:</strong> Tiết kiệm thời gian, tải trang nhanh, dễ bảo trì, hỗ trợ đa thiết bị (Responsive).</p>
+            <p><strong>Nhược điểm:</strong> Hoạt động khác nhau trên mỗi trình duyệt, khó cho người mới, rủi ro về định dạng nếu file lỗi.</p>
+        </section>
+
+        <section id="vai-tro">
+            <h2>6. VAI TRÒ VÀ Ý NGHĨA</h2>
+            <p>CSS giúp tách biệt nội dung và định dạng, tăng tính chuyên nghiệp và cho phép chỉnh sửa đồng bộ hàng loạt trang web chỉ bằng một thay đổi nhỏ.</p>
+        </section>
+    </main>
+
+    <aside class="sidebar">
+        <div class="sidebar-card">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: #ddd; border-radius: 50%;"></div>
+                <div>
+                    <strong>Phạm Hữu Ngọc</strong><br>
+                    <small>Software Engineer</small>
+                </div>
+            </div>
+            <p style="font-size: 13px; color: #666;">Chuyên gia tư vấn kỹ thuật với hơn 5 năm kinh nghiệm trong lĩnh vực Web Development.</p>
+        </div>
+
+        <div class="sidebar-card toc">
+            <h3>Nội dung bài viết</h3>
+            <ul>
+                <li><a href="#lich-su">1. Lịch sử của CSS</a></li>
+                <li><a href="#khai-niem">2. Khái niệm mẫu định dạng</a></li>
+                <li><a href="#tim-hieu">3. Tìm hiểu về CSS</a></li>
+                <li><a href="#cau-truc">4. Cấu trúc và cách dùng</a></li>
+                <li><a href="#uu-nhuoc">5. Ưu và nhược điểm</a></li>
+                <li><a href="#vai-tro">6. Vai trò, ý nghĩa</a></li>
+            </ul>
+        </div>
+    </aside>
 </div>
-
-<!-- 4 -->
-<div id="usage" class="section">
-<h2>4. CÁCH SỬ DỤNG CSS</h2>
-
-<ul>
-<li>Internal CSS</li>
-<li>External CSS</li>
-<li>Inline CSS</li>
-</ul>
-
-</div>
-
-<!-- 5 -->
-<div id="proscons" class="section">
-<h2>5. ƯU VÀ NHƯỢC ĐIỂM</h2>
-
-<h3>Ưu điểm:</h3>
-<ul>
-<li>Tiết kiệm thời gian</li>
-<li>Dùng lại nhiều lần</li>
-<li>Web đẹp hơn</li>
-</ul>
-
-<h3>Nhược điểm:</h3>
-<ul>
-<li>Khác trình duyệt</li>
-<li>Khó cho người mới</li>
-<li>Có thể lỗi</li>
-</ul>
-
-</div>
-
-<!-- 6 -->
-<div id="role" class="section">
-<h2>6. VAI TRÒ CSS</h2>
-
-<p>CSS giúp tách nội dung và giao diện.</p>
-<p>Giúp web dễ chỉnh sửa và chuyên nghiệp hơn.</p>
-
-</div>
-
-</div>
-
-<footer>
-© 2026 - Design by Mikean
-</footer>
 
 </body>
 </html>
