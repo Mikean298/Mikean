@@ -6,6 +6,37 @@
     <title>Học CSS: Lộ trình chi tiết cho người mới bắt đầu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .site-footer {
+    background-color: #f0f0f0; /* Màu nền xám nhạt giống ảnh */
+    padding: 15px 0;           /* Khoảng cách trên và dưới */
+    border-top: 1px solid #e0e0e0; /* Đường kẻ mỏng ở trên */
+    width: 100%;
+    margin-top: 50px;          /* Đẩy credit cách xa nội dung trên một chút */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;            /* Căn giữa toàn bộ khối */
+    display: flex;             /* Sắp xếp icon và chữ nằm hàng ngang */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    padding-left: 20px;        /* Khoảng cách lề trái */
+}
+
+.info-icon {
+    font-size: 18px;
+    color: #666;
+    margin-right: 8px;         /* Khoảng cách giữa icon và chữ */
+    display: flex;
+    align-items: center;
+}
+
+.copyright {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;         /* Làm chữ đậm giống ảnh */
+    color: #1a1a1a;            /* Màu chữ đen đậm */
+    margin: 0;                 /* Xóa khoảng cách mặc định của thẻ p */
+}
         :root {
             --primary-color: #ed1c24;
             --bg-light: #f4f4f4;
@@ -158,14 +189,11 @@
 
 <header>
     <div class="logo-area">
-        <strong style="color: var(--primary-color); font-size: 20px;">itViec</strong>
-        <input type="text" placeholder="Try yourself">
-        <input type="text" placeholder="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor">
+        <strong style="color: var(--primary-color); font-size: 20px;">Mikean</strong>
+        <input type="text" placeholder="Tìm kiếm">
     </div>
     <nav>
-        <a href="#">Việc Làm IT</a>
-        <a href="#">Sự Nghiệp IT</a>
-        <a href="#">Chuyên Môn IT</a>
+        <a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor">Việc Làm IT</a>
     </nav>
 </header>
 
@@ -178,9 +206,10 @@
             <h2>1. LỊCH SỬ CỦA CSS</h2>
             <p>CSS được phát triển bởi <strong>World Wide Web Consortium (W3C)</strong>. CSS ra đời với mục đích đơn giản là định hình cho website thông qua màu sắc, font chữ, bố cục... giúp tách biệt nội dung (HTML) và hình thức hiển thị.</p>
             
-            <div class="image-box">
-                                <p><i>Hình 1: Các cột mốc phát triển của CSS</i></p>
-            </div>
+           <div class="image-box">
+    <img src="MqO5FJu5BqX6pm118RBfsb2Qysq1-m693pji" alt="Lịch sử CSS" style="max-width: 100%; height: auto;">
+    <p><i>Cha đẻ của CSS</i></p>
+</div>
 
             <ul>
                 <li><strong>CSS1 (1996):</strong> Những tính năng cơ bản như màu sắc, font chữ.</li>
@@ -198,9 +227,10 @@
                 <li>Mẫu 2: Khung viền xanh 2px cho <code>&lt;h1&gt;</code>.</li>
                 <li>Mẫu 3: Thụt lề 15px cho thẻ <code>&lt;p&gt;</code>.</li>
             </ul>
-            <div class="image-box">
-                                <p><i>Hình 13.3: Minh họa mẫu định dạng CSS</i></p>
-            </div>
+           <div class="image-box">
+    <img src="nội dung tin - Word 4_5_2026 4_37_16 PM" alt="Lịch sử CSS" style="max-width: 100%; height: auto;">
+    <p><i>Mẫu định dạng CSS</i></p>
+</div>
         </section>
 
         <section id="tim-hieu">
@@ -247,11 +277,11 @@ selector {
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                 <div style="width: 50px; height: 50px; background: #ddd; border-radius: 50%;"></div>
                 <div>
-                    <strong>Phạm Hữu Ngọc</strong><br>
-                    <small>Software Engineer</small>
+                    <strong>Trần Quốc Khánh</strong><br>
+                    <small>12A7</small>
                 </div>
             </div>
-            <p style="font-size: 13px; color: #666;">Chuyên gia tư vấn kỹ thuật với hơn 5 năm kinh nghiệm trong lĩnh vực Web Development.</p>
+            <p style="font-size: 13px; color: #666;">Làm được cái này đỉnh vl</p>
         </div>
 
         <div class="sidebar-card toc">
@@ -267,6 +297,28 @@ selector {
         </div>
     </aside>
 </div>
+<footer class="site-footer">
+    <div class="footer-content">
+        <i class="fas fa-info-circle footer-icon"></i>
+        <span class="copyright-text">&copy; 2026 Mikean All rights reserved.</span>
+    </div>
+</footer>
+</body> ```
 
+#### 2. Thêm mã CSS
+Tìm đến phần thẻ `<style>` ở đầu file và dán đoạn mã CSS này vào phía dưới cùng của phần style để định dạng cho dòng Credit:
+
+```css
+<footer class="site-footer">
+    <div class="footer-container">
+        <span class="info-icon">
+            <i class="fas fa-info-circle"></i> 
+        </span>
+        
+        <p class="copyright">
+            &copy; 2026 Mikean All rights reserved.
+        </p>
+    </div>
+</footer>
 </body>
 </html>
